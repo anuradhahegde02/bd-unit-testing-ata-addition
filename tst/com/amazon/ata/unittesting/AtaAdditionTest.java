@@ -70,12 +70,10 @@ public class AtaAdditionTest {
         int[] values = {Integer.MAX_VALUE - 5, 3, 3};
         AtaAddition ataAddition = new AtaAddition();
 
-        // WHEN
-        int result = ataAddition.add(values);
-
-        // THEN
-        Assertions.assertTrue(result > Integer.MAX_VALUE - 5,
-                              "Expected summing above MAX_VALUE to result in value above MAX_VALUE");
+        // WHEN+THEN
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            ataAddition.add(values);
+        }, "Summing above MAX_VALUE should result in ArithmeticException thrown");
     }
 
 }
